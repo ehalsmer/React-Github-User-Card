@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import UserCard from './userCard';
+import FollowerCard from './followerCard';
 import './App.scss';
-import { Container, Card } from 'semantic-ui-react';
+import { Container, Card, Divider } from 'semantic-ui-react';
 import "semantic-ui-css/semantic.min.css";
 
 class App extends React.Component {
@@ -65,13 +66,15 @@ class App extends React.Component {
     console.log('state in render', this.state)
     console.log('followers array in render', this.state.followersArray)
     return (
-      <Container className="mainContainer">
-        <Card.Group centered>
+      <Container textAlign='center' className="mainContainer">
           {/* // Render userCard component, passing userData object as prop */}
           <UserCard updateUser={this.updateUser} userData={this.state.userData}/>
           {/* Use .map on followers array and render a card component for each follower object */}
           {/* <h2>Followers array map</h2> */}
-          {this.state.followersArray.map((follower)=><UserCard userData={follower} updateUser={this.updateUser}/>)}
+          <Divider horizontal/>
+          <h1>Followers:</h1>
+        <Card.Group centered>
+          {this.state.followersArray.map((follower)=><FollowerCard userData={follower} updateUser={this.updateUser}/>)}
         </Card.Group>
       </Container>
     );
