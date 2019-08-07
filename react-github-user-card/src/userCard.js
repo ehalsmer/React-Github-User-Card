@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Image, Button, Icon } from "semantic-ui-react";
+import { Card, Image, Icon, List } from "semantic-ui-react";
 
 function UserCard(props) {
   return (
@@ -10,9 +10,16 @@ function UserCard(props) {
           </a>
           {props.userData.login}
         </Card.Header>
-        {/* <p>ID: {props.userData.id}</p> */}
-      <Image src={props.userData.avatar_url} />
-      {/* <Button compact onClick={clickHandler}>View Followers</Button> */}
+        <Image centered size='small' src={props.userData.avatar_url} />
+        <Card.Content>
+            <Card.Description>
+                <List>
+                    <List.Item>Name: {props.userData.name}</List.Item>
+                    <List.Item>Location: {props.userData.location}</List.Item>
+                    <List.Item>Bio: {props.userData.bio}</List.Item>
+                </List>
+            </Card.Description>
+        </Card.Content>
     </Card>
   );
 }
